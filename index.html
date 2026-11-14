@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>حكاية جوجو ♡</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap');
+
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Tajawal,sans-serif;
+ color:#754d63;
+ background:linear-gradient(135deg,#fff0f5,#f8edff,#fff7f9);
+ min-height:100vh;
+ text-align:center;
+ overflow-x:hidden;
+}
+.page{display:none;min-height:100vh;padding:35px 18px}
+.page.active{display:flex;align-items:center;justify-content:center}
+.card{
+ width:min(650px,100%);
+ padding:35px 22px;
+ background:#ffffffdf;
+ border:1px solid #f6d4e4;
+ border-radius:30px;
+ box-shadow:0 15px 50px #d9a9c52b;
+}
+h1{font-size:clamp(36px,8vw,58px);color:#c36e99}
+h2{font-size:35px;color:#c36e99}
+p{font-size:18px;line-height:2}
+.heart{font-size:55px;animation:beat 1.3s infinite}
+@keyframes beat{50%{transform:scale(1.2)}}
+button{
+ border:0;border-radius:30px;padding:13px 27px;
+ background:#e99fbe;color:white;font-size:17px;
+ font-family:inherit;font-weight:bold;cursor:pointer;
+ margin:8px;transition:.2s;
+}
+button:hover{transform:translateY(-3px);background:#d984a9}
+.secondary{background:#eee2f5;color:#936b9f}
+.photo{
+ width:min(350px,100%);height:260px;object-fit:cover;
+ border:10px solid white;box-shadow:0 5px 20px #cda9bc;
+ transform:rotate(-2deg);background:#fff0f5;
+}
+label{display:block;color:#b86d91;margin:15px;cursor:pointer}
+input{max-width:220px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:25px 0}
+.item{background:#fff3f8;border:1px solid #f5d6e4;padding:18px;border-radius:18px;font-weight:bold}
+.item span{display:block;font-size:27px;margin-bottom:8px}
+.hidden{display:none;background:#f9efff;padding:20px;border-radius:20px;line-height:2;margin-top:20px}
+.hidden.show{display:block}
+.small{font-size:14px;color:#b58a9f}
+</style>
+</head>
+<body>
+
+<section class="page active" id="p1">
+ <div class="card">
+  <div class="heart">🎀</div>
+  <p>إلى أجمل إنسانة في حياتي</p>
+  <h1>حكاية جوجو</h1>
+  <p>جهزت لكِ شيئاً صغيراً، لكنه مليء بالكثير من الحب.</p>
+  <p>مستعدة تشوفين مفاجأتك؟ ♡</p>
+  <button onclick="go(2)">ابدئي الحكاية 💗</button>
+ </div>
+</section>
+
+<section class="page" id="p2">
+ <div class="card">
+  <div class="heart">💌</div>
+  <h2>بداية الحكاية</h2>
+  <p>من بين كل الصدف اللي ممكن تصير في هذا العالم، كانت معرفتي فيكِ من أجملها.</p>
+  <p>ما كنت أعرف إن شخصاً واحداً ممكن يصير له كل هالمكان في قلبي.</p>
+  <button class="secondary" onclick="go(1)">رجوع</button>
+  <button onclick="go(3)">الذكرى الأجمل ♡</button>
+ </div>
+</section>
+
+<section class="page" id="p3">
+ <div class="card">
+  <h2>أول مرة قلت لكِ أحبك</h2>
+  <p>هنا مكان الذكرى اللي ما أبي أنساها أبداً.</p>
+<img class="photo" id="memory" src="memory.jpg" alt="صورتنا">
+  <label>♡ اختاري صورتكم من جهازك
+   <input type="file" accept="image/*" onchange="addPhoto(event)">
+  </label>
+  <p>يمكن كانت مجرد كلمة، لكنها بالنسبة لي كانت بداية حكاية كاملة.</p>
+  <p><b>أحبك، ومن يومها وأنا أعنيها أكثر.</b></p>
+  <button class="secondary" onclick="go(2)">رجوع</button>
+  <button onclick="go(4)">كمّلي يا جوجو</button>
+ </div>
+</section>
+
+<section class="page" id="p4">
+ <div class="card">
+  <h2>أشياء أحبها فيكِ</h2>
+  <p>أشياء كثيرة، وهذه مجرد بداية...</p>
+  <div class="grid">
+   <div class="item"><span>🌷</span>ضحكتك</div>
+   <div class="item"><span>🧸</span>عفويتك</div>
+   <div class="item"><span>✨</span>ذكاؤك</div>
+   <div class="item"><span>💗</span>حنانك</div>
+   <div class="item"><span>☀️</span>وجودك</div>
+   <div class="item"><span>🎀</span>كونك جوجو</div>
+  </div>
+  <button class="secondary" onclick="go(3)">رجوع</button>
+  <button onclick="go(5)">رسالة سرية 💌</button>
+ </div>
+</section>
+
+<section class="page" id="p5">
+ <div class="card">
+  <div class="heart">💌</div>
+  <h2>رسالة لكِ وحدك</h2>
+  <p>فيه كلام خبّيته لكِ هنا...</p>
+  <button onclick="document.getElementById('secret').classList.toggle('show')">افتحي الرسالة</button>
+  <div class="hidden" id="secret">
+   يا مجدولين، أتمنى أكون دائماً سبباً في سعادتك، وأتمنى أشوفك تحققين كل أحلامك. مهما مرت الأيام، أتمنى تظلين تلاقين في قلبي مكاناً آمناً مليئاً بالحب. أحبك يا جوجو. ❤️
+  </div>
+  <button class="secondary" onclick="go(4)">رجوع</button>
+  <button onclick="go(6)">آخر مفاجأة 🎂</button>
+ </div>
+</section>
+
+<section class="page" id="p6">
+ <div class="card">
+  <div class="heart">🎂</div>
+  <p>١٤ نوفمبر</p>
+  <h1>عيد ميلاد سعيد جوجو!</h1>
+  <p>كل عام وأنتِ أجمل أقداري، وكل عام وضحكتك تنوّر أيامي.</p>
+  <p>أتمنى سنتك الجديدة تكون مليئة بالفرح والنجاح والأشياء اللي تحبينها.</p>
+  <h2>أحبك يا مجدولين ❤️</h2>
+  <p>وكل سنة وأنا محظوظ فيكِ.</p>
+  <button onclick="celebrate()">اضغطي هنا للفرحة ✨</button>
+  <p class="small">صُنعت بكل الحب، لجوجو وحدها ♡</p>
+  <button class="secondary" onclick="go(1)">إعادة الحكاية</button>
+ </div>
+</section>
+
+<script>
+function go(n){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById('p'+n).classList.add('active');
+ window.scrollTo(0,0);
+}
+function addPhoto(e){
+ const file=e.target.files[0];
+ if(file) document.getElementById('memory').src=URL.createObjectURL(file);
+}
+function celebrate(){
+ for(let i=0;i<35;i++){
+  let x=document.createElement('div');
+  x.innerHTML=['💗','💕','🌸','✨'][Math.floor(Math.random()*4)];
+  x.style.cssText='position:fixed;top:-30px;left:'+Math.random()*100+'%;font-size:25px;z-index:9;transition:transform 3s linear;pointer-events:none';
+  document.body.appendChild(x);
+  setTimeout(()=>x.style.transform='translateY(110vh) rotate(360deg)',50);
+  setTimeout(()=>x.remove(),3200);
+ }
+}
+</script>
+</body>
+</html>
